@@ -1,0 +1,19 @@
+<svg width="90" height="58" viewBox="0 0 90 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_69_283)">
+    <path d="M10.4358 0H0V58H10.4358V0Z" fill="url(#barGradient_69_283)"/>
+    <path d="M26.35 0H15.9142V58H26.35V0Z" fill="url(#barGradient_69_283)"/>
+    <path d="M42.2608 0H31.825V58H42.2608V0Z" fill="url(#barGradient_69_283)"/>
+    <path d="M58.175 0H47.7392V58H58.175V0Z" fill="url(#barGradient_69_283)"/>
+    <path d="M74.0892 0H63.6534V58H74.0892V0Z" fill="url(#barGradient_69_283)"/>
+    <path d="M90 0H79.5642V58H90V0Z" fill="url(#barGradient_69_283)"/>
+  </g>
+  <defs>
+    <linearGradient id="barGradient_69_283" x1="45" y1="0" x2="45" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E8BE5"/>
+      <stop offset="0.548077" stop-color="#172FD8"/>
+    </linearGradient>
+    <clipPath id="clip0_69_283">
+      <rect width="90" height="58" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>

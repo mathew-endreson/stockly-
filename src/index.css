@@ -1,0 +1,451 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 99%;
+    --foreground: 0 0% 20%;
+    --card: 0 0% 99%;
+    --card-foreground: 0 0% 20%;
+    --popover: 0 0% 99%;
+    --popover-foreground: 0 0% 20%;
+    --primary: 232 100% 48%;
+    --primary-foreground: 0 0% 99%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 20%;
+    --muted: 0 0% 88%;
+    --muted-foreground: 0 0% 37%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 20%;
+    --destructive: 353 91% 51%;
+    --destructive-foreground: 0 0% 99%;
+    --border: 0 0% 76%;
+    --input: 0 0% 88%;
+    --ring: 232 100% 48%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 232 100% 48%;
+    --sidebar-primary-foreground: 0 0% 99%;
+    --sidebar-accent: 0 0% 94%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 0 0% 76%;
+    --sidebar-ring: 232 100% 48%;
+
+    /* Supporting colors */
+    --info: 204 89% 50%;
+    --warning: 26 90% 50%;
+    --shipping: 74 88% 50%;
+    --success: 131 87% 48%;
+    --danger: 353 91% 51%;
+    --reserved: 235 92% 50%;
+
+    /* Typography system - Fluid scaling for premium feel */
+    --font-sans: "Poppins", "Noto Sans Arabic", "Avenir Next", "Segoe UI", sans-serif;
+    --type-h1: clamp(1.75rem, 1.5rem + 1.25vw, 3rem);
+    --type-h2: clamp(1.5rem, 1.25rem + 1vw, 2.25rem);
+    --type-h3: clamp(1.25rem, 1.1rem + 0.55vw, 1.625rem);
+    --type-h4: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+    --type-body-lg: 1.0625rem;
+    --type-body-base: 1rem;
+    --type-body-sm: 0.875rem;
+    --type-ui-button: 0.875rem;
+    --type-ui-nav: 0.9375rem;
+    --type-ui-label: 0.75rem;
+
+  }
+
+  .dark {
+    --background: 0 0% 20%;
+    --foreground: 0 0% 99%;
+    --card: 0 0% 37%;
+    --card-foreground: 0 0% 99%;
+    --popover: 0 0% 37%;
+    --popover-foreground: 0 0% 94%;
+    --primary: 232 100% 48%;
+    --primary-foreground: 0 0% 99%;
+    --secondary: 0 0% 27%;
+    --secondary-foreground: 0 0% 94%;
+    --muted: 0 0% 27%;
+    --muted-foreground: 0 0% 88%;
+    --accent: 0 0% 27%;
+    --accent-foreground: 0 0% 94%;
+    --destructive: 353 91% 51%;
+    --destructive-foreground: 0 0% 99%;
+    --border: 0 0% 40%;
+    --input: 0 0% 40%;
+    --ring: 232 100% 48%;
+    --sidebar-background: 0 0% 20%;
+    --sidebar-foreground: 0 0% 94%;
+    --sidebar-primary: 232 100% 48%;
+    --sidebar-primary-foreground: 0 0% 99%;
+    --sidebar-accent: 0 0% 27%;
+    --sidebar-accent-foreground: 0 0% 99%;
+    --sidebar-border: 0 0% 40%;
+    --sidebar-ring: 232 100% 48%;
+
+    --info: 204 89% 50%;
+    --warning: 26 90% 50%;
+    --shipping: 74 88% 50%;
+    --success: 131 87% 48%;
+    --danger: 353 91% 51%;
+    --reserved: 235 92% 50%;
+
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-size: var(--type-body-base);
+    line-height: 1.6;
+    font-weight: 400;
+    font-variant-numeric: lining-nums;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: hsl(var(--foreground));
+  }
+
+  h1 {
+    font-size: var(--type-h1);
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: var(--type-h2);
+    font-weight: 650;
+  }
+
+  h3 {
+    font-size: var(--type-h3);
+    font-weight: 650;
+  }
+
+  h4 {
+    font-size: var(--type-h4);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  p,
+  li,
+  td,
+  th,
+  input,
+  textarea,
+  select {
+    font-size: var(--type-body-base);
+  }
+
+  small {
+    font-size: var(--type-body-sm);
+  }
+
+  label {
+    font-size: var(--type-ui-label);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  button,
+  [role="button"] {
+    font-size: var(--type-ui-button);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  nav a {
+    font-size: var(--type-ui-nav);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  /* Reduce heavy "bold" text so numeric values are easier to read. */
+  .font-bold {
+    font-weight: 600 !important;
+  }
+
+  .font-extrabold,
+  .font-black {
+    font-weight: 700 !important;
+  }
+
+  h1.font-bold,
+  h2.font-bold,
+  h3.font-bold,
+  h4.font-bold {
+    font-weight: 700 !important;
+    letter-spacing: -0.01em;
+  }
+
+  .tabular-nums {
+    font-weight: 500 !important;
+  }
+
+  .hide-date-picker-icon {
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: textfield;
+  }
+
+  .hide-date-picker-icon::-webkit-calendar-picker-indicator,
+  .hide-date-picker-icon::-webkit-clear-button,
+  .hide-date-picker-icon::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  .page-shell {
+    @apply min-w-0 max-w-full space-y-5 overflow-x-hidden sm:space-y-6;
+  }
+
+  .page-shell > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .page-header {
+    @apply flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between;
+  }
+
+  .page-actions {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .surface-panel {
+    @apply rounded-md border border-border/70 bg-card shadow-sm;
+  }
+
+  .content-breathe {
+    @apply p-4 sm:p-5 lg:p-6;
+  }
+
+  .table-responsive {
+    @apply min-w-0 max-w-full overflow-x-auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .touch-min {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .space-x-2 > * + * {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-4 > * + * {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .ml-1 {
+  margin-left: 0;
+  margin-right: 0.25rem;
+}
+
+[dir="rtl"] .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .ml-4 {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+[dir="rtl"] .mr-1 {
+  margin-right: 0;
+  margin-left: 0.25rem;
+}
+
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .mr-4 {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+[dir="rtl"] .pl-10 {
+  padding-left: 0;
+  padding-right: 2.5rem;
+}
+
+/* Smooth transitions for theme changes without animating every layout element. */
+@media (prefers-reduced-motion: no-preference) {
+  html,
+  body,
+  #root,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  [data-slot="card"],
+  [data-slot="dialog-content"],
+  [data-slot="dropdown-menu-content"] {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow, opacity, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+}
+
+/* Barcode scanner styles */
+#scanner-container,
+.scanner-container {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+#scanner-container video,
+.scanner-container video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+#scanner-container canvas,
+.scanner-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Hide html5-qrcode default scan region overlay and any injected UI */
+#scanner-container > *:not(video):not(canvas),
+.scanner-container > *:not(video):not(canvas) {
+  display: none !important;
+}
+
+/* Hide html5-qrcode injected controls/status UI */
+#scanner-container [id^="html5-qrcode"],
+.scanner-container [id^="html5-qrcode"] {
+  display: none !important;
+}
+
+#scanner-container button,
+#scanner-container select,
+#scanner-container .html5-qrcode-element,
+.scanner-container button,
+.scanner-container select,
+.scanner-container .html5-qrcode-element {
+  display: none !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Print styles */
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #receipt,
+  #receipt * {
+    visibility: visible;
+  }
+
+  #receipt {
+    position: static;
+    width: 100%;
+    max-width: 72mm;
+    margin: 0 auto;
+    padding: 6mm 6mm;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-after: avoid;
+    break-after: avoid-page;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  #receipt * {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
