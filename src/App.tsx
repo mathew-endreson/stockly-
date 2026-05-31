@@ -1,39 +1,42 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from '@/context/AuthContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import DashboardLayout from '@/components/DashboardLayout';
 
-// Pages
-import LoginPage from '@/pages/LoginPage';
-import RegisterPage from '@/pages/RegisterPage';
-import ForgotPasswordPage from '@/pages/ForgotPasswordPage';
-import ResetPasswordPage from '@/pages/ResetPasswordPage';
-import AcceptInvitationPage from '@/pages/AcceptInvitationPage';
-import DashboardHome from '@/pages/DashboardHome';
-import InventoryPage from '@/pages/InventoryPage';
-import AnalyticsPage from '@/pages/AnalyticsPage';
-import EcommercePage from '@/pages/EcommercePage';
-import InvoicesPage from '@/pages/InvoicesPage';
-import ExpensesPage from '@/pages/ExpensesPage';
-import SettingsPage from '@/pages/SettingsPage';
-import UserManagementPage from '@/pages/UserManagementPage';
-import SurveillancePage from '@/pages/SurveillancePage';
-import ClientsPage from '@/pages/ClientsPage';
-import DistributorsPage from '@/pages/DistributorsPage';
-import SubscriptionPage from '@/pages/SubscriptionPage';
-import AdminPanelPage from '@/pages/AdminPanelPage';
+// Landing page is the initial visit target — keep it in the main chunk so the
+// first paint never waits on a second JS roundtrip.
 import HomePage from '@/pages/HomePage';
-import FeaturesPage from '@/pages/FeaturesPage';
-import PricingPage from '@/pages/PricingPage';
-import ContactPage from '@/pages/ContactPage';
-import PrivacyPage from '@/pages/PrivacyPage';
-import TermsPage from '@/pages/TermsPage';
+
+const DashboardLayout = lazy(() => import('@/components/DashboardLayout'));
+const LoginPage = lazy(() => import('@/pages/LoginPage'));
+const RegisterPage = lazy(() => import('@/pages/RegisterPage'));
+const ForgotPasswordPage = lazy(() => import('@/pages/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('@/pages/ResetPasswordPage'));
+const AcceptInvitationPage = lazy(() => import('@/pages/AcceptInvitationPage'));
+const DashboardHome = lazy(() => import('@/pages/DashboardHome'));
+const InventoryPage = lazy(() => import('@/pages/InventoryPage'));
+const AnalyticsPage = lazy(() => import('@/pages/AnalyticsPage'));
+const EcommercePage = lazy(() => import('@/pages/EcommercePage'));
+const InvoicesPage = lazy(() => import('@/pages/InvoicesPage'));
+const ExpensesPage = lazy(() => import('@/pages/ExpensesPage'));
+const SettingsPage = lazy(() => import('@/pages/SettingsPage'));
+const UserManagementPage = lazy(() => import('@/pages/UserManagementPage'));
+const SurveillancePage = lazy(() => import('@/pages/SurveillancePage'));
+const ClientsPage = lazy(() => import('@/pages/ClientsPage'));
+const DistributorsPage = lazy(() => import('@/pages/DistributorsPage'));
+const SubscriptionPage = lazy(() => import('@/pages/SubscriptionPage'));
+const AdminPanelPage = lazy(() => import('@/pages/AdminPanelPage'));
+const FeaturesPage = lazy(() => import('@/pages/FeaturesPage'));
+const PricingPage = lazy(() => import('@/pages/PricingPage'));
+const ContactPage = lazy(() => import('@/pages/ContactPage'));
+const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'));
+const TermsPage = lazy(() => import('@/pages/TermsPage'));
+const NicheOnboardingPage = lazy(() => import('@/pages/NicheOnboardingPage'));
+const BranchNicheOnboardingPage = lazy(() => import('@/pages/BranchNicheOnboardingPage'));
+
 import { Toaster } from '@/components/ui/sonner';
-import NicheOnboardingPage from '@/pages/NicheOnboardingPage';
-import BranchNicheOnboardingPage from '@/pages/BranchNicheOnboardingPage';
 import { isDesktopRuntime } from '@/shared/platform/platform';
 import { startDesktopSyncLifecycle } from '@/shared/sync/syncLifecycle';
 import { adminAPI } from '@/services/api';
@@ -83,6 +86,7 @@ function App() {
       <LanguageProvider>
         <AuthProvider>
           <Router>
+            <Suspense fallback={null}>
             <Routes>
               {/* Public Routes */}
               <Route path="/" element={isDesktop ? <DesktopEntryRoute /> : <HomePage />} />
@@ -145,6 +149,7 @@ function App() {
               {/* Fallback */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
+            </Suspense>
             <Toaster richColors position="top-right" />
           </Router>
         </AuthProvider>

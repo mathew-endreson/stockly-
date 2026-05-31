@@ -134,22 +134,22 @@ const arabicIndustries = [
   {
     title: 'التجارة الإلكترونية',
     copy: 'مزامنة رقمية سلسة. اربط متاجرك بمنصة موحدة. يقوم ستوكلي بأتمتة تحديثات المخزون متعدد القنوات، وإدارة تنفيذ الطلبات بسرعة عالية، والتكامل مباشرة مع شركات الشحن لمنع البيع الزائد.',
-    image: '/landing-page/rectangle-415.svg',
+    image: '/landing-page/rectangle-415.webp',
   },
   {
     title: 'البيع بالتجزئة والبوتيكات',
     copy: 'دقة في المتجر. مصمم للتجربة المنسقة. أدِر مساحة الأرفف الفعلية، وتتبع معاملات نقاط البيع في الوقت الفعلي، وتعامل مع التحويلات بين المواقع المتعددة بواجهة نظيفة تبقي تركيزك على العميل.',
-    image: '/landing-page/rectangle-416.svg',
+    image: '/landing-page/rectangle-416.webp',
   },
   {
     title: 'البيع بالجملة',
     copy: 'إدارة التدفق بالجملة. تشغيل اللوجستيات واسعة النطاق. تعامل مع الطلبات الضخمة المعقدة، وتتبع المخزون على مستوى المنصات، وأدِر أوقات تسليم الموردين بسير عمل مشتريات آلي مبني للتوزيع الكبير.',
-    image: '/landing-page/rectangle-417.svg',
+    image: '/landing-page/rectangle-417.webp',
   },
   {
     title: 'السوبرماركت',
     copy: 'تتبع عالي السرعة. مبني للرف السريع. أدِر آلاف وحدات SKU، وراقب تواريخ الانتهاء بتنبيهات ذكية، وحسّن جداول إعادة التخزين لضمان توفر المنتجات الأساسية اليومية في الممرات عالية الحركة.',
-    image: '/landing-page/rectangle-418.svg',
+    image: '/landing-page/rectangle-418.webp',
   },
 
 ];
@@ -158,25 +158,25 @@ const industries = [
     title: 'E-commerce',
     copy:
       'Seamless Digital Sync. Connect your storefronts to a unified hub. Stockly automates multi-channel inventory updates, manages high-speed order fulfillment, and integrates directly with your shipping carriers to prevent overselling.',
-    image: '/landing-page/rectangle-415.svg',
+    image: '/landing-page/rectangle-415.webp',
   },
   {
     title: 'Retail & Boutiques',
     copy:
       'Storefront Precision. Designed for the curated experience. Manage physical shelf space, track point-of-sale (POS) transactions in real-time, and handle multi-location transfers with a clean interface that keeps your focus on the customer.',
-    image: '/landing-page/rectangle-416.svg',
+    image: '/landing-page/rectangle-416.webp',
   },
   {
     title: 'Wholesale',
     copy:
       'Bulk Flow Management. Powering large-scale logistics. Handle complex bulk orders, track pallet-level inventory, and manage supplier lead times with automated procurement workflows built for high-volume distribution.',
-    image: '/landing-page/rectangle-417.svg',
+    image: '/landing-page/rectangle-417.webp',
   },
   {
     title: 'Supermarkets',
     copy:
       'High-Velocity Tracking. Built for the rapid shelf. Manage thousands of SKUs, monitor expiration dates with smart alerts, and optimize restocking schedules to ensure your daily essentials are always available for high-traffic aisles.',
-    image: '/landing-page/rectangle-418.svg',
+    image: '/landing-page/rectangle-418.webp',
   },
 ];
 
@@ -657,7 +657,7 @@ const LandingPage: React.FC = () => {
         className="relative bg-cover bg-center"
         dir={isArabic ? 'rtl' : 'ltr'}
         style={{
-          backgroundImage: "url('/landing-page/rectangle-31.svg')",
+          backgroundImage: "url('/landing-page/rectangle-31.webp')",
           height: 'clamp(520px, 72vh, 760px)',
         }}
       >
@@ -719,7 +719,15 @@ const LandingPage: React.FC = () => {
                   className="group flex w-full items-start gap-4 transition-transform duration-200 hover:-translate-y-0.5 xl:w-[360px]"
                 >
                   <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[6px] bg-[#E8E8E8] transition-all duration-200 group-hover:bg-white group-hover:shadow-[0_8px_16px_rgba(0,0,0,0.12)]">
-                    <img src={feature.iconSrc} alt="" className="h-16 w-16 object-contain" />
+                    <img
+                      src={feature.iconSrc}
+                      alt=""
+                      className="h-16 w-16 object-contain"
+                      width={64}
+                      height={64}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                   <div className={`min-w-0 flex-1 xl:max-w-[280px] ${isArabic ? 'text-right' : 'text-left'}`}>
                     <h3 className="text-lg font-bold leading-[1.2] text-[#222222]">{feature.title}</h3>
@@ -737,9 +745,11 @@ const LandingPage: React.FC = () => {
           {isArabic && (
             <div className="overflow-hidden lg:rounded-r">
               <img
-                src="/landing-page/rectangle-27.svg"
+                src="/landing-page/rectangle-27.webp"
                 alt="Stockly on tablet by the beach"
                 className="block w-full object-cover lg:mr-auto lg:w-[120%] lg:max-w-none"
+                loading="lazy"
+                decoding="async"
                 style={{
                   WebkitMaskImage: 'linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.9) 34%, rgba(0, 0, 0, 1) 58%)',
                   maskImage: 'linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.9) 34%, rgba(0, 0, 0, 1) 58%)',
@@ -775,9 +785,11 @@ const LandingPage: React.FC = () => {
           {!isArabic && (
             <div className="overflow-hidden lg:rounded-l">
               <img
-                src="/landing-page/rectangle-27.svg"
+                src="/landing-page/rectangle-27.webp"
                 alt="Stockly on tablet by the beach"
                 className="block w-full object-cover lg:ml-auto lg:w-[120%] lg:max-w-none"
+                loading="lazy"
+                decoding="async"
                 style={{
                   WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.9) 34%, rgba(0, 0, 0, 1) 58%)',
                   maskImage: 'linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.9) 34%, rgba(0, 0, 0, 1) 58%)',
@@ -799,7 +811,15 @@ const LandingPage: React.FC = () => {
               className="group flex h-full cursor-default rounded-[8px] border border-[#D6D8E2] bg-[#F8F8FB] p-4 transition-all duration-300 hover:-translate-y-0.5"
             >
               <div className={`${isArabic ? 'ml-3' : 'mr-3'} mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-[6px] border border-[#DEE2EE] bg-white`}>
-                <img src={card.iconSrc} alt="" className="h-8 w-auto" />
+                <img
+                  src={card.iconSrc}
+                  alt=""
+                  className="h-8 w-auto"
+                  width={32}
+                  height={32}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div className={`min-w-0 flex-1 ${isArabic ? 'text-right' : 'text-left'}`}>
                 <h3 className="text-[1.38rem] font-bold leading-[1.18] text-[#1F1F1F]">{card.title}</h3>
@@ -834,6 +854,8 @@ const LandingPage: React.FC = () => {
                     src={industry.image}
                     alt={industry.title}
                     className="block aspect-square w-full object-cover object-top transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,rgba(12,15,22,0.3)_0%,rgba(12,15,22,0.65)_100%)] px-4 py-3">
                     <h3 className="text-2xl font-normal tracking-[-0.01em] text-white">{industry.title}</h3>

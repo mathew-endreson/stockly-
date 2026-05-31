@@ -37,5 +37,46 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
+    build: {
+      target: 'es2020',
+      cssCodeSplit: true,
+      sourcemap: false,
+      minify: 'esbuild',
+      reportCompressedSize: false,
+      chunkSizeWarningLimit: 1500,
+      assetsInlineLimit: 4096,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes('node_modules')) return undefined;
+            if (
+              id.includes('/react-dom/') ||
+              id.includes('\\react-dom\\') ||
+              id.includes('/react/') ||
+              id.includes('\\react\\') ||
+              id.includes('/scheduler/') ||
+              id.includes('\\scheduler\\')
+            ) return 'react-core';
+            if (id.includes('react-router')) return 'router';
+            if (id.includes('@radix-ui')) return 'radix';
+            if (id.includes('framer-motion')) return 'framer';
+            if (id.includes('recharts') || id.includes('d3-')) return 'charts';
+            if (id.includes('xlsx')) return 'xlsx';
+            if (id.includes('html5-qrcode')) return 'qrcode';
+            if (id.includes('embla-carousel')) return 'carousel';
+            if (id.includes('i18next') || id.includes('react-i18next')) return 'i18n';
+            if (id.includes('lucide-react') || id.includes('react-icons')) return 'icons';
+            if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) return 'forms';
+            if (id.includes('date-fns') || id.includes('react-day-picker')) return 'date';
+            if (id.includes('sonner') || id.includes('vaul') || id.includes('cmdk')) return 'ui-misc';
+            return 'vendor';
+          },
+        },
+      },
+    },
+    esbuild: {
+      legalComments: 'none',
+      drop: mode === 'production' ? ['console', 'debugger'] : [],
+    },
   };
 });
