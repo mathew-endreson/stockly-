@@ -49,14 +49,12 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks(id) {
             if (!id.includes('node_modules')) return undefined;
-            if (
-              id.includes('/react-dom/') ||
-              id.includes('\\react-dom\\') ||
-              id.includes('/react/') ||
-              id.includes('\\react\\') ||
-              id.includes('/scheduler/') ||
-              id.includes('\\scheduler\\')
-            ) return 'react-core';
+            // NOTE: React (and its CJS-published packages: react-dom, scheduler,
+            // jsx-runtime, react-is, use-sync-external-store, prop-types) must NOT
+            // be force-grouped here. Doing so reorders the @rollup/plugin-commonjs
+            // interop and leaves React's exports object undefined at init, crashing
+            // with "Cannot set properties of undefined (setting 'Activity')".
+            // Let Rollup keep React in the default vendor handling.
             if (id.includes('react-router')) return 'router';
             if (id.includes('@radix-ui')) return 'radix';
             if (id.includes('framer-motion')) return 'framer';
@@ -69,7 +67,7 @@ export default defineConfig(({ mode }) => {
             if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) return 'forms';
             if (id.includes('date-fns') || id.includes('react-day-picker')) return 'date';
             if (id.includes('sonner') || id.includes('vaul') || id.includes('cmdk')) return 'ui-misc';
-            return 'vendor';
+            return undefined;
           },
         },
       },
